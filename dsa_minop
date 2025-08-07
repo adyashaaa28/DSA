@@ -1,0 +1,19 @@
+#You are given an integer array nums and an integer k.
+
+#An integer h is called valid if all values in the array that are strictly greater than h are identical.
+
+class Solution:
+    def minOperations(self, nums: list[int], k: int) -> int:
+        # Check for impossible case
+        for num in nums:
+            if num < k:
+                return -1
+        
+        # Collect unique values greater than k
+        vals = set()
+        for num in nums:
+            if num > k:
+                vals.add(num)
+        
+        # The number of operations is equal to the number of unique values > k
+        return len(vals)
